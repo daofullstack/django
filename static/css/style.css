@@ -1,0 +1,37 @@
+.body1{
+    background: url("../images/c.jpg") no-repeat;
+    background-size: cover;
+}
+.body2{
+    background: url("../images/d.jpg") no-repeat;
+    background-size: cover;
+}
+.body2 a{
+    color: orange;
+}
+
+.body1 .nav-link,.body2 .nav-link{
+    color:orange;
+    font-family: bold;
+}
+.body1 h1,.body2 h1{
+    color: orange;
+    font-style: italic;
+    font-family: fantasy;
+    font-weight: bold;
+}
+.body1 a:hover{
+    color: orangered;
+}
+.body2 .form .form-group label{
+    color: orange;
+}
+.form{
+    background-color: rgba(17, 14, 14, 0.521);
+    border-radius: 15px;
+    padding: 15px;
+}
+.body1 .coleurAbout{
+    background-color: rgba(247, 143, 16, 0.384);
+    border-radius: 15px;
+}

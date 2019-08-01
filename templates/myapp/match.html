@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>les statistiques</title>
+  </head>
+  <body class="body2">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#"> <h1 class="mt-2">PARISPORT</h1></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="btn btn-outline-success my-2 my-sm-0" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+              <span class="navbar-text">
+
+                  
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <form class="form-inline">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            Bienvenue  {{ user}} |  <a class="btn btn-outline-success my-2 my-sm-0" href="deconnect">deconnect</a>
+                        </li>
+                      </ul>
+              </span>
+            </div>
+          </nav>
+      <div class="row justify-content-center">
+        <div class="col-8">
+        
+          <h1 class="mt-2">{{sports.all|length }} SPORTS</h1>
+          <span>Mon compte: {{utilisateurs.compte}}</span> 
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Retrait</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Depot</button>
+          <hr class="mt-0 mb-4">
+          {% block content %}
+          
+          {% for sport in sports %} 
+          <table class="table table-hover table-dark">
+                <thead>
+                <tr>
+                    <th colspan="4"> <center> ({{ sport.sport_match.all|length }})  {{ sport.type_sport }}</center> </th>
+                </tr>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">1ére équipe</th>
+                    <th scope="col">VS</th>
+                    <th scope="col">2éme équipe</th>
+                    <th scope="col">Lieu</th>
+                    <th scope="col">V1</th>
+                    <th scope="col">V2</th>
+                    <th scope="col">N</th>
+                    <th scope="col">ajouté le </th>
+                    <th>disponibilité</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for items in sport.sport_match.all %}
+                  <tr>
+                    <th scope="row">{{items.id}}</th>
+                    <td>{{items.equipe1}}:</td>
+                    <td>vs</td>
+                    <td>{{items.equipe2}}:</td>
+                    <td>{{items.descript_match}}</td>
+                    <td><a href="/add_vote1/{{items.id}}/"><br>({{items.vote1}})votes</a></td>
+                    <td><a href="/add_vote2/{{items.id}}/"> <br>({{items.vote2}}) votes</a></td>
+                    <td>0</td>
+                    <td>{{items.date_add}}</td>
+                    <td>En cour ...</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              <hr>
+            {% endfor %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+{% load staticfiles %}
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>inscription</title>
+  </head>
+  <body class="body2">
+        <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"> <h1 class="mt-2">PARISPORT</h1></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="btn btn-outline-success my-2 my-sm-0" href="/">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                  </ul>
+                  <span class="navbar-text">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            </li>
+                            <li class="nav-item">
+                              <a class="btn btn-outline-success my-2 my-sm-0" href="/connexion">login</a>
+                            </li>
+                          </ul>
+                  </span>
+                </div>
+              </nav>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+               
+          <hr class="mt-0 mb-4">
+          {% block content %}
+          <h1>inscription</h1>
+          <!-- {% if envoi %}Votre message a bien été envoyé !{% endif %}
+
+            <form action="{% url 'inscript' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit" />
+            </form> -->
+        <form class="form" action="{% url 'inscript' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group mb-2">
+                <label for="prenom">Prénom :</label>
+                <input type="text" class="form-control" id="prenom" placeholder="Prenom" name="prenom">
+            </div>
+            <div class="form-group mb-2">
+                <label for="nom">Nom :</label>
+                <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom">
+            </div>
+            <div class="form-group mb-2">
+                    <label for="username">Nom utilisateur :</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+            </div>
+            <div class="form-group mb-2">
+                <label for="email">Email :</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+            </div>
+            <div class="form-group  mb-2">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+            </div>
+            
+            <div class="form-group mb-2">
+                <input type="submit" class="btn btn-success mb-2" value="m'inscrire">
+            </div>
+            
+            </form>
+        {% endblock %}
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
